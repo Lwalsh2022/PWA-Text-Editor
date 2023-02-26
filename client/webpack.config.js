@@ -11,7 +11,11 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
+      install: './src/js/install.js',
+      database: './src/js/database.js',
+      header: './src/js/header.js',
+      editor: './src/js/editor.js',
+
     },
     output: {
       filename: '[name].bundle.js',
@@ -20,7 +24,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './src/index.html',
-        title: 'Contact Cards'
+        title: 'JATE'
       }),
 
       // Injects the custom service worker
@@ -56,6 +60,11 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
+        },
+
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'client/dist',
         },
         {
           test: /\.m?js$/,
